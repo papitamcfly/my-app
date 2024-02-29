@@ -66,21 +66,17 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
         style({ opacity: 0.2, offset: 1 , transform:'translateX(0) scale(1) '})
       ]))
     ])
-  ])
+  ]),
+  slideInAnimation
   ]
 })
 
 export class AppComponent {
   title = 'animations';
-  isOpen = true;
-  toggle() {
-    this.isOpen = !this.isOpen;
-  }
-  showElement= false;
-  isShown = false;
-  isOpen1 = true;
-  act() {
-    this.isOpen1 = !this.isOpen1;
+
+  constructor(private contexts: ChildrenOutletContexts) {}
+  getRouteAnimationData() {
+    return this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'];
   }
   
 
