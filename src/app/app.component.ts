@@ -1,23 +1,16 @@
-import { Component, HostBinding } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  keyframes,
-  // ...
-} from '@angular/animations';
-import { RouterOutlet } from '@angular/router';
-
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { ChildrenOutletContexts } from '@angular/router';
+import { slideInAnimation } from './animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports:[RouterOutlet,CommonModule ],
   standalone: true,
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  imports: [RouterLink, RouterOutlet],
   animations:[
     trigger('openClose', [
       // ...
@@ -74,8 +67,8 @@ import { RouterOutlet } from '@angular/router';
     ])
   ])
   ]
- 
 })
+
 export class AppComponent {
   title = 'animations';
   isOpen = true;
