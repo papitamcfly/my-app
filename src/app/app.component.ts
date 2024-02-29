@@ -19,24 +19,25 @@ import { RouterOutlet } from '@angular/router';
   imports:[RouterOutlet,CommonModule ],
   standalone: true,
   animations:[
-    trigger('openClose',[
-    state('open', style({
-      height: '200px',
-      opacity: 1,
-      backgroundColor: 'yellow'
-    })),
-    state('closed', style({
-      height: '100px',
-      opacity: 0.8,
-      backgroundColor: 'blue'
-    })),
-    transition('open => closed', [
-      animate('1s')
+    trigger('openClose', [
+      // ...
+      state('open', style({
+        height: '200px',
+        opacity: 1,
+        backgroundColor: 'yellow'
+      })),
+      state('closed', style({
+        height: '100px',
+        opacity: 0.8,
+        backgroundColor: 'blue'
+      })),
+      transition('* => closed', [
+        animate('1s')
+      ]),
+      transition('* => open', [
+        animate('0.5s')
+      ]),
     ]),
-    transition('closed => open', [
-      animate('0.5s')
-    ]),
-  ]),
   trigger('myInsertRemoveTrigger', [
     transition(':enter', [
       style({ opacity: 0 }),
@@ -52,9 +53,10 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'animations';
   isOpen = true;
-  showElement= false;
-  isShown = false;
   toggle() {
     this.isOpen = !this.isOpen;
   }
+  showElement= false;
+  isShown = false;
+
 }
