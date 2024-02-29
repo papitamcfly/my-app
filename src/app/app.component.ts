@@ -4,8 +4,13 @@ import { ChildrenOutletContexts } from '@angular/router';
 import { slideInAnimation } from './animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+
 @Component({
   standalone: true,
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
+  imports: [RouterLink, RouterOutlet],
   animations:[
     trigger('openClose', [
       // ...
