@@ -7,8 +7,19 @@
 </div>
 
 
-
+<div>
 <button (click)="isShown = !isShown">Mostrar/Ocultar</button>
 <div @myInsertRemoveTrigger *ngIf="isShown" class="insert-remove-container">
   <p>The box is inserted</p>
+</div>
+</div>
+
+<div>
+<nav>
+  <button type="button" (click)="act()">activar o desactivar</button>
+</nav>
+
+<div [@ActiveInactive]="isOpen1 ? 'Active' : 'Inactive'" class="open-close-container">
+  <p>The box is now {{ isOpen1 ? 'Active' : 'Inactive' }}!</p>
+</div>
 </div>

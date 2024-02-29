@@ -38,15 +38,41 @@ import { RouterOutlet } from '@angular/router';
         animate('0.5s')
       ]),
     ]),
+
   trigger('myInsertRemoveTrigger', [
     transition(':enter', [
-      style({ opacity: 0 }),
-      animate('100ms', style({ opacity: 1 })),
+      style({ opacity: 0,
+      
+      }),
+      animate('1s', style({ opacity: 1,   height:"200"})),
     ]),
     transition(':leave', [
-      animate('100ms', style({ opacity: 0 }))
+      animate('1s', style({ opacity: 0 }))
     ])
+    
   ]),
+  trigger('ActiveInactive', [
+    state('Active', style({
+      height: '200px',
+      opacity: 1,
+      backgroundColor: 'yellow'
+    })),
+    state('Inactive', style({
+      height: '100px',
+      opacity: 0.5,
+      backgroundColor: 'green'
+    })),
+    // ...
+    transition('* => *', [
+      animate('2s', keyframes ( [
+        style({ opacity: 0.1, offset: 0.1 , transform:'translateX(50%) scale(0.5)'}),
+        style({ opacity: 0.6, offset: 0.2 , transform:'translateX(50%) scale(0.5)'}),
+        style({ opacity: 1,   offset: 0.5 , transform:'translateX(50%) scale(0.65) rotate(180deg)'}),
+        style({ opacity: 0.2, offset: 0.7 , transform:'translateX(0) scale(0.80) rotate(180deg)'}),
+        style({ opacity: 0.2, offset: 1 , transform:'translateX(0) scale(1) '})
+      ]))
+    ])
+  ])
   ]
  
 })
@@ -58,5 +84,10 @@ export class AppComponent {
   }
   showElement= false;
   isShown = false;
+  isOpen1 = true;
+  act() {
+    this.isOpen1 = !this.isOpen1;
+  }
+  
 
 }
